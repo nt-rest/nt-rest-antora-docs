@@ -1,0 +1,10 @@
+name: 'nt-rest'
+title: 'NT-REST'
+version: '1.0'
+nav: 
+- modules/ROOT/nav.adoc
+- modules/tutorials/nav.adoc
+- modules/how-tos/nav.adoc
+- modules/explanations/nav.adoc
+- modules/reference/nav.adoc
+- modules/licensing/nav.adoc
