@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>How To Develop Client :: NT-REST Docs</title>
+		<link rel="canonical" href="https://docs.nt-rest.com/how-to/1.0/how-to-develop-client.html">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="generator" content="Antora 2.3.3">
+		<link rel="stylesheet" type="text/css" href="../../static/css/antora.css" />
+		<link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist@3/swagger-ui.css" />
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
+
+		<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+		<script src="https://unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js" crossorigin></script>
+	</head>
+	<body class="hlmrf article">
+		<header>
+			<img src='../../static/img/logotype.svg' width='32' height='32' alt='Logotype' />
+			<nav>
+				<ul><li><a href="/home/1.0/index.html">Home</a></li><li>
+						<a href="javascript:void(0)">Documentation</a>
+						<ul><li><a href="/tutorials/1.0/index.html">Tutorials</a></li><li><a href="/how-to/1.0/index.html">How Tos</a></li><li><a href="/reference/1.0/index.html">Reference</a></li><li><a href="/explanations/1.0/index.html">Explanations</a></li><li><a href="/licensing/1.0/index.html">Licensing</a></li></ul>
+					</li>
+					<li>
+						<a href="javascript:void(0)">Downloads</a>
+						<ul>
+							<li><a target="_blank" href="https://github.com/nt-rest/nt-rest">Source Code</a></li>
+							<li><a target="_blank" href="https://github.com/nt-rest/nt-rest">Latest Release</a></li>
+							<li><a target="_blank" href="https://github.com/nt-rest/nt-rest">Release History</a></li>
+						</ul>
+					</li><li><a href="/store/1.0/index.html">Store</a></li></ul>
+			</nav>
+			<form style="float: right" action="https://search.freefind.com/find.html" method="get" accept-charset="utf-8" target="_self">
+				<input type="hidden" name="si" value="13820503">
+				<input type="hidden" name="pid" value="r">
+				<input type="hidden" name="n" value="0">
+				<input type="hidden" name="_charset_" value="">
+				<input type="hidden" name="bcd" value="&#247;">
+				<input type="text" name="query" size="20" placeholder="Powered by FreeFind" > 
+				<input type="submit" value="search">
+			</form>
+		</header>
+		<aside class='lside'>
+			<nav>
+				
+<ul><li class="" data-depth="0">
+<ul><li class="" data-depth="1"><a class='type-internal' href="index.html">How Tos</a>
+<ul><li class="" data-depth="2"><a class='type-internal' href="how-to-install.html">How To Install</a>
+</li><li class="" data-depth="2"><a class='type-internal' href="how-to-compile.html">How To Compile</a>
+</li><li class="" data-depth="2"><a class='type-internal' href="how-to-manage-server.html">How To Manage Server</a>
+</li><li class="current" data-depth="2"><a class='type-internal' href="how-to-develop-client.html">How To Develop Client</a>
+</li></ul></li></ul></li></ul>			</nav><ul><li class="current"><a href="/how-to/1.0/index.html">1.0</a></li></ul></aside>
+
+		<main><nav class="breadcrumbs" aria-label="breadcrumbs"><ul><li><a href="index.html">1.0</a></li><li><a href="index.html">How Tos</a></li><li><a href="how-to-develop-client.html">How To Develop Client</a></li></ul></nav>
+				<h1>How To Develop Client</h1>
+				<div class="sect1">
+<h2 id="_information_to_consider_before_you_start_developing_your_client"><a class="anchor" href="#_information_to_consider_before_you_start_developing_your_client"></a>Information to consider before you start developing your client</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_making_an_http_request"><a class="anchor" href="#_making_an_http_request"></a>Making an HTTP Request</h3>
+<div class="paragraph">
+<p>Domain name <code>localhost.ntre.st</code> is mapped to the IPv4 address <code>127.0.0.1</code> and can be used instead of <code>127.0.0.0/24</code> IPv4 address or <code>localhost</code> domain name.</p>
+</div>
+<div class="paragraph">
+<p>Domain name <code>localhost.ntre.st</code> is mapped to the IPv6 address <code>::1</code> and can be used instead of <code>::1</code> IPv6 address or <code>localhost</code> domain name.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Even if no body is send with request, <code>Content-Type</code> header <strong>MUST</strong> be specified anyway.
+<code>Content-Type</code> of request determines <code>Content-Type</code> of response, that is why requests without <code>Content-Type</code> cannot be processed properly.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_viewing_logs"><a class="anchor" href="#_viewing_logs"></a>Viewing Logs</h3>
+<div class="paragraph">
+<p>On startup NT-REST logs <code>Information</code> level event log record to <code>Application</code> Windows&#8482; Log with path to a file with other messages.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 1. Event log record example</div>
+<div class="content">
+Started logging to file "C:\Windows\system32\config\systemprofile\AppData\Local\triflesoft\ntrest\server-ntrest-binder.exe-f0e1d2c3\logs\2020-01-01.log".
+</div>
+</div>
+<div class="paragraph">
+<p>Once a day log file is rolled over and another <code>Information</code> level event is logged to <code>Application</code> Windows&#8482; Log with a new path to a file.
+Use Windows &#8482; Event Viewer application to view these events.</p>
+</div>
+<div class="paragraph">
+<p>It may happen so, that despite you have administrative privileges, you cannot access a directory containing a file with Windows Explorer or any other file manager. We recommend opening a log file directly by full path; or copying a log file with <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/copy" target="_blank" rel="noopener">copy command</a> to any accessible place, for instance your desktop.</p>
+</div>
+<div class="listingblock">
+<div class="title">Copy log file</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bat hljs" data-lang="bat">cd %WINDIR%\System32\config\systemprofile\AppData\Local\triflesoft\nt-rest\server-ntrest-binder.exe\logs
+copy 2020-01-01.log %USERPROFILE%\Desktop</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Define <code>NTREST_LOG_DEBUG</code> environment variable to log <code>debug</code> level messages to file. Most probably you do not need this.<br>
+Define <code>NTREST_LOG_TRACE</code> environment variable to log <code>trace</code> level messages to file. Most probably you do not need this.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<code>.\examples\</code> directory contains API usage examples for JavaScript. Use <code>Network</code> tab of developer&#8217;s console (<kbd>F12</kbd>) of your browser to view raw requests and responses.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_running_as_a_service"><a class="anchor" href="#_running_as_a_service"></a>Running as a Service</h3>
+<div class="paragraph">
+<p>To install NT-REST service with default configuration run the following command</p>
+</div>
+<div class="listingblock">
+<div class="title">Install Windows&#8482; service</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bat hljs" data-lang="bat">server-ntrest-binder /install</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you run NT-REST service under a custom user account, you may be asked to grant &#8220;Log on as a service&#8221; privilege.
+Revoking this privilege is simple.
+Run &#8220;Local Security Policy&#8221; from &#8220;Administrative Tools&#8221;.
+Browse to &#8220;Local Policies\User Rights Assignment&#8221;.
+Remove unnecessary accounts from &#8220;Log on as a service&#8221;.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuring_ssl_certificates"><a class="anchor" href="#_configuring_ssl_certificates"></a>Configuring SSL Certificates</h3>
+<div class="listingblock">
+<div class="title">Create self signed CA and new signed certificate with OpenSSL/Linux</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bat hljs" data-lang="bat">openssl req -new -x509 -nodes -out ca.local.crt -keyout ca.local.key -subj "/CN=ca.local" -newkey rsa:4096 -days 10000 -sha512
+openssl req -new -out &lt;hostname&gt;.req -keyout &lt;hostname&gt;.key -nodes -newkey rsa:4096 -subj "/CN=&lt;hostname&gt;"
+openssl x509 -req -in &lt;hostname&gt;.req -CAkey  ca.local.key -CA ca.local.crt -days 10000 -set_serial 1 -sha512 -out &lt;hostname&gt;.crt
+openssl pkcs12 -export -out &lt;hostname&gt;.pfx -inkey &lt;hostname&gt;.key -in &lt;hostname&gt;.crt</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Setup certificate for Windows&#8482;</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bat hljs" data-lang="bat">netsh http delete sslcert ipport=0.0.0.0:443
+netsh http add sslcert ipport=0.0.0.0:443     certhash=325726d1e2a1ed8f1b6851cef9c284d771a79db8 certstorename=MY disablelegacytls=enable appid={01234567-89AB-CDEF-0123-456789ABCDEF}
+netsh http delete sslcert hostnameport=&lt;hostname&gt;:443
+netsh http add sslcert hostnameport=&lt;hostname&gt;:443 certhash=325726d1e2a1ed8f1b6851cef9c284d771a79db8 certstorename=MY disablelegacytls=enable appid={01234567-89AB-CDEF-0123-456789ABCDEF}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Replace &#8220;&lt;hostname&gt;&#8221; and &#8220;{01234567-89AB-CDEF-0123-456789ABCDEF}&#8221; with actual values for your execution environment.</p>
+</div>
+</div>
+</div>
+</div>
+				<script src="https://utteranc.es/client.js" repo="nt-rest/utterances" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script></main>
+
+		<aside class='rside'>
+			<nav data-levels="2">
+			</nav>
+		</aside>
+		<footer>
+			Copyright &copy; 2020, TrifleSoft LLC.
+			<script async src="../../static/js/antora.js"></script>
+			<script async src="../../static/js/vendor/highlight.js"></script>
+		</footer>
+	</body>
+</html>

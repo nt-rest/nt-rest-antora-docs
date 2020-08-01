@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>Origin&#8217;s Configuration :: NT-REST Docs</title>
+		<link rel="canonical" href="https://docs.nt-rest.com/reference/1.0/configuration/origin-configuration.html">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="generator" content="Antora 2.3.3">
+		<link rel="stylesheet" type="text/css" href="../../../static/css/antora.css" />
+		<link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist@3/swagger-ui.css" />
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
+
+		<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+		<script src="https://unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js" crossorigin></script>
+	</head>
+	<body class="hlmrf article">
+		<header>
+			<img src='../../../static/img/logotype.svg' width='32' height='32' alt='Logotype' />
+			<nav>
+				<ul><li><a href="/home/1.0/index.html">Home</a></li><li>
+						<a href="javascript:void(0)">Documentation</a>
+						<ul><li><a href="/tutorials/1.0/index.html">Tutorials</a></li><li><a href="/how-to/1.0/index.html">How Tos</a></li><li><a href="/reference/1.0/index.html">Reference</a></li><li><a href="/explanations/1.0/index.html">Explanations</a></li><li><a href="/licensing/1.0/index.html">Licensing</a></li></ul>
+					</li>
+					<li>
+						<a href="javascript:void(0)">Downloads</a>
+						<ul>
+							<li><a target="_blank" href="https://github.com/nt-rest/nt-rest">Source Code</a></li>
+							<li><a target="_blank" href="https://github.com/nt-rest/nt-rest">Latest Release</a></li>
+							<li><a target="_blank" href="https://github.com/nt-rest/nt-rest">Release History</a></li>
+						</ul>
+					</li><li><a href="/store/1.0/index.html">Store</a></li></ul>
+			</nav>
+			<form style="float: right" action="https://search.freefind.com/find.html" method="get" accept-charset="utf-8" target="_self">
+				<input type="hidden" name="si" value="13820503">
+				<input type="hidden" name="pid" value="r">
+				<input type="hidden" name="n" value="0">
+				<input type="hidden" name="_charset_" value="">
+				<input type="hidden" name="bcd" value="&#247;">
+				<input type="text" name="query" size="20" placeholder="Powered by FreeFind" > 
+				<input type="submit" value="search">
+			</form>
+		</header>
+		<aside class='lside'>
+			<nav>
+				
+<ul><li class="" data-depth="0">
+<ul><li class="" data-depth="1"><a class='type-internal' href="../index.html">Reference</a>
+<ul><li class="" data-depth="2"><a class='type-internal' href="../api/index.html">API Reference</a>
+<ul><li class="" data-depth="3"><a class='type-internal' href="../api/authentication-local-api-reference.html">Authentication (Local)</a>
+</li><li class="" data-depth="3"><a class='type-internal' href="../api/authentication-relay-api-reference.html">Authentication (Relay)</a>
+</li><li class="" data-depth="3"><a class='type-internal' href="../api/eventlog-api-reference.html">Event Log</a>
+</li><li class="" data-depth="3"><a class='type-internal' href="../api/fingerprinting-api-reference.html">Fingerprinting</a>
+</li><li class="" data-depth="3"><a class='type-internal' href="../api/identification-api-reference.html">Identification</a>
+</li><li class="" data-depth="3"><a class='type-internal' href="../api/version-api-reference.html">Version</a>
+</li></ul></li><li class="" data-depth="2"><a class='type-internal' href="index.html">Configuration Reference</a>
+<ul><li class="current" data-depth="3"><a class='type-internal' href="origin-configuration.html">Origin&#8217;s Configuration</a>
+</li></ul></li></ul></li></ul></li></ul>			</nav><ul><li class="current"><a href="/reference/1.0/index.html">1.0</a></li></ul></aside>
+
+		<main><nav class="breadcrumbs" aria-label="breadcrumbs"><ul><li><a href="../index.html">1.0</a></li><li><a href="../index.html">Reference</a></li><li><a href="index.html">Configuration Reference</a></li><li><a href="origin-configuration.html">Origin&#8217;s Configuration</a></li></ul></nav>
+				<h1>Origin&#8217;s Configuration</h1>
+				<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>NT-REST may serve multiple different clients.
+For instance one client may be a web application which needs integrated authentication and another is a mobile application which prints.
+Each client shall be restricted differently.
+Therefore NT-REST has no global configuration but uses <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin" target="_blank" rel="noopener">Origin header</a> to distinguish clients.</p>
+</div>
+<div class="paragraph">
+<p>Origin&#8217;s configuration is saved in Windows&#8482; Registry, under <code>HKEY_LOCAL_MACHINE\SOFTWARE\TrifleSoft\NT-REST\Configuration\Origins</code> key&#8217;s subkey.
+Subkey name should match value of <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin" target="_blank" rel="noopener">Origin header</a>.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 1. Registry key path example</div>
+<div class="content">
+HLKM\SOFTWARE\TrifleSoft\NT-REST\Configuration\Origins\http://example.com
+HLKM\SOFTWARE\TrifleSoft\NT-REST\Configuration\Origins\https://example.com:8443
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_list_of_supported_values"><a class="anchor" href="#_list_of_supported_values"></a>List of supported values</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Whenever NT-REST has to execute an HTTP request against some external web-site, you may use awesome <a href="https://httpbin.org/" class="bare">https://httpbin.org/</a> service for debugging.<br>
+Please, be nice, and do not abuse external resources.
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 37.5%;">
+<col style="width: 25%;">
+<col style="width: 37.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AuthenticationServiceAccountNames</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REG_MULTI_SZ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AccountName<br>
+EXAMPLE\AccountName<br>
+EXAMPLE.COM\AccountName<br>
+<a href="mailto:account-name@example.com">account-name@example.com</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AuthenticationServiceHttpHeaders</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REG_MULTI_SZ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X-Custom-Header-1: Alpha<br>
+X-Custom-Header-2: Beta</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AuthenticationServiceHttpMethod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REG_SZ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">POST</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AuthenticationServiceHttpUrl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REG_DWORD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://example.com/callbacks/authentication" class="bare">https://example.com/callbacks/authentication</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AuthenticationServicePermissions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REG_DWORD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EventLogServicePermissions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REG_DWORD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FingerprintingServiceHttpHeaders</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REG_MULTI_SZ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X-Custom-Header-1: Alpha<br>
+X-Custom-Header-2: Beta</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FingerprintingServiceHttpMethod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REG_SZ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">POST</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FingerprintingServiceHttpUrl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REG_SZ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://example.com/callbacks/fingerprinting" class="bare">https://example.com/callbacks/fingerprinting</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FingerprintingServicePermissions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REG_DWORD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IdentificationServiceHttpHeaders</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REG_MULTI_SZ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X-Custom-Header-1: Alpha<br>
+X-Custom-Header-2: Beta</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IdentificationServiceHttpMethod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REG_SZ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">POST</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IdentificationServiceHttpUrl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REG_SZ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://example.com/callbacks/identification" class="bare">https://example.com/callbacks/identification</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IdentificationServicePermissions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REG_DWORD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PrintingServicePermissions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REG_DWORD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_detailed_descriptions"><a class="anchor" href="#_detailed_descriptions"></a>Detailed descriptions</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_authenticationserviceaccountnames"><a class="anchor" href="#_authenticationserviceaccountnames"></a>AuthenticationServiceAccountNames</h3>
+<div class="paragraph">
+<p>A multiline string, list of Windows&#8482; account names, one account name per line.</p>
+</div>
+<div class="paragraph">
+<p>Regardsless of authentication method NT-REST needs Windows(NT) <a href="https://docs.microsoft.com/en-us/windows/win32/secauthn/lsa-logon-sessions" target="_blank" rel="noopener">logon session</a> token.
+If local authentication is used, token of the callee process is extracted implicitly, no additional configuration required.
+If relay authentication is used, token cannot be extracted without additional hints.
+To extract a token NT-REST enumerates logon sessions and select a logon session for an account with name from the list.
+If multiple logon session match, earliest one is selected.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_authenticationservicehttpheaders"><a class="anchor" href="#_authenticationservicehttpheaders"></a>AuthenticationServiceHttpHeaders</h3>
+<div class="paragraph">
+<p>A multiline string, list of HTTP headers to be added to an HTTP request to a relay authentication server, one HTTP header per line.</p>
+</div>
+<div class="paragraph">
+<p>If relay authentication is used, server may expect additional headers. Headers are defined as name and value, separated by colon.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_authenticationservicehttpmethod"><a class="anchor" href="#_authenticationservicehttpmethod"></a>AuthenticationServiceHttpMethod</h3>
+<div class="paragraph">
+<p>A single string, name of an HTTP method to be used for an HTTP request to a relay authentication server.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_authenticationservicehttpurl"><a class="anchor" href="#_authenticationservicehttpurl"></a>AuthenticationServiceHttpUrl</h3>
+<div class="paragraph">
+<p>A single string, a URL to be used for an HTTP request to a relay authentication server.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_authenticationservicepermissions"><a class="anchor" href="#_authenticationservicepermissions"></a>AuthenticationServicePermissions</h3>
+<div class="paragraph">
+<p>A 32-bit number, bitwise-OR of values corresponding to allowed actions.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Local authentication is allowed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relay authentication is allowed</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_eventlogservicepermissions"><a class="anchor" href="#_eventlogservicepermissions"></a>EventLogServicePermissions</h3>
+<div class="paragraph">
+<p>A 32-bit number, bitwise-OR of values corresponding to allowed actions.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logging of EVENTLOG_SUCCESS events is allowed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logging of EVENTLOG_ERROR_TYPE events is allowed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logging of EVENTLOG_WARNING_TYPE events is allowed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logging of EVENTLOG_INFORMATION_TYPE events is allowed.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_fingerprintingservicehttpheaders"><a class="anchor" href="#_fingerprintingservicehttpheaders"></a>FingerprintingServiceHttpHeaders</h3>
+<div class="paragraph">
+<p>A multiline string, list of HTTP headers to be added to an HTTP request to a fingerprinting server, one HTTP header per line.</p>
+</div>
+<div class="paragraph">
+<p>Headers are defined as name and value, separated by colon.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fingerprintingservicehttpmethod"><a class="anchor" href="#_fingerprintingservicehttpmethod"></a>FingerprintingServiceHttpMethod</h3>
+<div class="paragraph">
+<p>A single string, name of an HTTP method to be used for an HTTP request to a fingerprinting server.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fingerprintingservicehttpurl"><a class="anchor" href="#_fingerprintingservicehttpurl"></a>FingerprintingServiceHttpUrl</h3>
+<div class="paragraph">
+<p>A single string, a URL to be used for an HTTP request to a fingerprinting server.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fingerprintingservicepermissions"><a class="anchor" href="#_fingerprintingservicepermissions"></a>FingerprintingServicePermissions</h3>
+<div class="paragraph">
+<p>A 32-bit number, bitwise-OR of values corresponding to allowed actions.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fingerprinting is allowed</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_identificationservicehttpheaders"><a class="anchor" href="#_identificationservicehttpheaders"></a>IdentificationServiceHttpHeaders</h3>
+<div class="paragraph">
+<p>A multiline string, list of HTTP headers to be added to an HTTP request to an identification server, one HTTP header per line.</p>
+</div>
+<div class="paragraph">
+<p>Headers are defined as name and value, separated by colon.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_identificationservicehttpmethod"><a class="anchor" href="#_identificationservicehttpmethod"></a>IdentificationServiceHttpMethod</h3>
+<div class="paragraph">
+<p>A single string, name of an HTTP method to be used for an HTTP request to an identification server.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_identificationservicehttpurl"><a class="anchor" href="#_identificationservicehttpurl"></a>IdentificationServiceHttpUrl</h3>
+<div class="paragraph">
+<p>A single string, a URL to be used for an HTTP request to an identification server.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_identificationservicepermissions"><a class="anchor" href="#_identificationservicepermissions"></a>IdentificationServicePermissions</h3>
+<div class="paragraph">
+<p>A 32-bit number, bitwise-OR of values corresponding to allowed actions.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identification is allowed</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_printingservicepermissions"><a class="anchor" href="#_printingservicepermissions"></a>PrintingServicePermissions</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_registry_file_example"><a class="anchor" href="#_registry_file_example"></a>Registry File Example</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\TrifleSoft\NT-REST\Configuration\Origins\http://example.com]
+"AuthenticationServiceAccountNames"=hex(7):41,00,63,00,63,00,6f,00,75,00,6e,00,74,00,4e,00,61,00,6d,00,65,00,00,00,45,00,58,00,41,00,4d,00,50,00,4c,00,45,00,5c,00,41,00,63,00,63,00,6f,00,75,00,6e,00,74,00,4e,00,61,00,6d,00,65,00,00,00,45,00,58,00,41,00,4d,00,50,00,4c,00,45,00,2e,00,43,00,4f,00,4d,00,5c,00,41,00,63,00,63,00,6f,00,75,00,6e,00,74,00,4e,00,61,00,6d,00,65,00,00,00,61,00,63,00,63,00,6f,00,75,00,6e,00,74,00,2d,00,6e,00,61,00,6d,00,65,00,40,00,65,00,78,00,61,00,6d,00,70,00,6c,00,65,00,2e,00,63,00,6f,00,6d,00,00,00,00,00
+"AuthenticationServiceHttpHeaders"=hex(7):58,00,2d,00,43,00,75,00,73,00,74,00,6f,00,6d,00,2d,00,48,00,65,00,61,00,64,00,65,00,72,00,2d,00,31,00,3a,00,20,00,41,00,6c,00,70,00,68,00,61,00,00,00,58,00,2d,00,43,00,75,00,73,00,74,00,6f,00,6d,00,2d,00,48,00,65,00,61,00,64,00,65,00,72,00,2d,00,32,00,3a,00,20,00,42,00,65,00,74,00,61,00,00,00,00,00
+"AuthenticationServiceHttpMethod"="POST"
+"AuthenticationServiceHttpUrl"="https://example.com/callbacks/authentication"
+"AuthenticationServicePermissions"=dword:00000003
+"EventLogServicePermissions"=dword:00000017
+"FingerprintingServiceHttpHeaders"=hex(7):58,00,2d,00,43,00,75,00,73,00,74,00,6f,00,6d,00,2d,00,48,00,65,00,61,00,64,00,65,00,72,00,2d,00,31,00,3a,00,20,00,41,00,6c,00,70,00,68,00,61,00,00,00,58,00,2d,00,43,00,75,00,73,00,74,00,6f,00,6d,00,2d,00,48,00,65,00,61,00,64,00,65,00,72,00,2d,00,32,00,3a,00,20,00,42,00,65,00,74,00,61,00,00,00,00,00
+"FingerprintingServiceHttpMethod"="POST"
+"FingerprintingServiceHttpUrl"="https://example.com/callbacks/fingerprinting"
+"FingerprintingServicePermissions"=dword:00000001
+"IdentificationServiceHttpHeaders"=hex(7):58,00,2d,00,43,00,75,00,73,00,74,00,6f,00,6d,00,2d,00,48,00,65,00,61,00,64,00,65,00,72,00,2d,00,31,00,3a,00,20,00,41,00,6c,00,70,00,68,00,61,00,00,00,58,00,2d,00,43,00,75,00,73,00,74,00,6f,00,6d,00,2d,00,48,00,65,00,61,00,64,00,65,00,72,00,2d,00,32,00,3a,00,20,00,42,00,65,00,74,00,61,00,00,00,00,00
+"IdentificationServiceHttpMethod"="POST"
+"IdentificationServiceHttpUrl"="https://example.com/callbacks/identification"
+"IdentificationServicePermissions"=dword:00000001
+"PrintingServicePermissions"=dword:00000000</code></pre>
+</div>
+</div>
+</div>
+</div>
+				<script src="https://utteranc.es/client.js" repo="nt-rest/utterances" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script></main>
+
+		<aside class='rside'>
+			<nav data-levels="2">
+			</nav>
+		</aside>
+		<footer>
+			Copyright &copy; 2020, TrifleSoft LLC.
+			<script async src="../../../static/js/antora.js"></script>
+			<script async src="../../../static/js/vendor/highlight.js"></script>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>How To Compile :: NT-REST Docs</title>
+		<link rel="canonical" href="https://docs.nt-rest.com/how-to/1.0/how-to-compile.html">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="generator" content="Antora 2.3.3">
+		<link rel="stylesheet" type="text/css" href="../../static/css/antora.css" />
+		<link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist@3/swagger-ui.css" />
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
+
+		<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+		<script src="https://unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js" crossorigin></script>
+	</head>
+	<body class="hlmrf article">
+		<header>
+			<img src='../../static/img/logotype.svg' width='32' height='32' alt='Logotype' />
+			<nav>
+				<ul><li><a href="/home/1.0/index.html">Home</a></li><li>
+						<a href="javascript:void(0)">Documentation</a>
+						<ul><li><a href="/tutorials/1.0/index.html">Tutorials</a></li><li><a href="/how-to/1.0/index.html">How Tos</a></li><li><a href="/reference/1.0/index.html">Reference</a></li><li><a href="/explanations/1.0/index.html">Explanations</a></li><li><a href="/licensing/1.0/index.html">Licensing</a></li></ul>
+					</li>
+					<li>
+						<a href="javascript:void(0)">Downloads</a>
+						<ul>
+							<li><a target="_blank" href="https://github.com/nt-rest/nt-rest">Source Code</a></li>
+							<li><a target="_blank" href="https://github.com/nt-rest/nt-rest">Latest Release</a></li>
+							<li><a target="_blank" href="https://github.com/nt-rest/nt-rest">Release History</a></li>
+						</ul>
+					</li><li><a href="/store/1.0/index.html">Store</a></li></ul>
+			</nav>
+			<form style="float: right" action="https://search.freefind.com/find.html" method="get" accept-charset="utf-8" target="_self">
+				<input type="hidden" name="si" value="13820503">
+				<input type="hidden" name="pid" value="r">
+				<input type="hidden" name="n" value="0">
+				<input type="hidden" name="_charset_" value="">
+				<input type="hidden" name="bcd" value="&#247;">
+				<input type="text" name="query" size="20" placeholder="Powered by FreeFind" > 
+				<input type="submit" value="search">
+			</form>
+		</header>
+		<aside class='lside'>
+			<nav>
+				
+<ul><li class="" data-depth="0">
+<ul><li class="" data-depth="1"><a class='type-internal' href="index.html">How Tos</a>
+<ul><li class="" data-depth="2"><a class='type-internal' href="how-to-install.html">How To Install</a>
+</li><li class="current" data-depth="2"><a class='type-internal' href="how-to-compile.html">How To Compile</a>
+</li><li class="" data-depth="2"><a class='type-internal' href="how-to-manage-server.html">How To Manage Server</a>
+</li><li class="" data-depth="2"><a class='type-internal' href="how-to-develop-client.html">How To Develop Client</a>
+</li></ul></li></ul></li></ul>			</nav><ul><li class="current"><a href="/how-to/1.0/index.html">1.0</a></li></ul></aside>
+
+		<main><nav class="breadcrumbs" aria-label="breadcrumbs"><ul><li><a href="index.html">1.0</a></li><li><a href="index.html">How Tos</a></li><li><a href="how-to-compile.html">How To Compile</a></li></ul></nav>
+				<h1>How To Compile</h1>
+				<div class="sect1">
+<h2 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_mandatory"><a class="anchor" href="#_mandatory"></a>Mandatory</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Microsoft&#8482; Visual Studio&#8482; 2019. Community Edition is good enough.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Desktop Development with C++</p>
+</li>
+<li>
+<p>MSVC v142 - VS 2019 C++ x64/x86 Spectre-mitigated libs (v14.26)</p>
+</li>
+<li>
+<p>Windows 10 SDK (10.0.18362.0)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Internet connection.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_optional"><a class="anchor" href="#_optional"></a>Optional</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>A git client to check out source code. Downloading archive file is fine.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_compilation"><a class="anchor" href="#_compilation"></a>Compilation</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Download source code</p>
+<div class="listingblock">
+<div class="title">Recommended: check out source code with git client</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">git clone https://github.com/nt-rest/nt-rest.git</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">NOT recommended: download and unpack archive with source code</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl -L -o nt-rest.tar.gz https://api.github.com/repos/nt-rest/nt-rest/tarball/ +
+tar -xf nt-rest.tar.gz</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Read all licenses under <code>.\licenses\</code> directory. Really do.</p>
+</li>
+<li>
+<p>Execute PowerShell&#8482; script <code>.\vendor.ps1</code>.<br>
+This script downloads various dependencies from Internet. This step may fail unexpectedly, so make sure this step succeeded.</p>
+</li>
+<li>
+<p>Open <code>nt-rest.sln</code> with Microsoft&#8482; Visual Studio&#8482;.</p>
+</li>
+<li>
+<p>Select solution platform matching platform type of your machine, either <code>x64</code> or <code>x86</code>. To figure out platform type of your machine, execute<br></p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">systeminfo | findstr /C:"System Type"</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Build. It may take some time.</p>
+</li>
+<li>
+<p>Find results under <code>.\executables\</code> directory.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+				<script src="https://utteranc.es/client.js" repo="nt-rest/utterances" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script></main>
+
+		<aside class='rside'>
+			<nav data-levels="2">
+			</nav>
+		</aside>
+		<footer>
+			Copyright &copy; 2020, TrifleSoft LLC.
+			<script async src="../../static/js/antora.js"></script>
+			<script async src="../../static/js/vendor/highlight.js"></script>
+		</footer>
+	</body>
+</html>

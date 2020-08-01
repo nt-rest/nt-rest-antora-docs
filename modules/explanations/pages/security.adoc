@@ -1,5 +1,0 @@
-= Security
-
-Various measures which improve overall security.
-
-1. Anonymous clients cannot read exact application version.

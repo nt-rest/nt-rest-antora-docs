@@ -1,3 +1,0 @@
-=  How To Manage Server
-
-== Active Directory Group Policy

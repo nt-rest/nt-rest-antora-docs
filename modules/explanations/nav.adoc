@@ -1,4 +1,0 @@
-* Explanations
-** xref:history.adoc[]
-** xref:authentication-flow.adoc[]
-** xref:security.adoc[]

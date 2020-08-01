@@ -1,5 +1,0 @@
-* How To
-** xref:how-to-install.adoc[]
-** xref:how-to-compile.adoc[]
-** xref:how-to-manage-server.adoc[]
-** xref:how-to-develop-client.adoc[]
